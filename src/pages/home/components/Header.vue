@@ -7,10 +7,13 @@
       <i class="iconfont iconsousuo"></i>
       输入城市/景点/游玩主题
     </div>
-    <div class="header-right">
-      {{this.city}}
-      <span class=" arrow-icon"><i class="iconfont iconjiantou"></i></span>
-    </div>
+    <router-link :to="{name: 'City'}">
+      <div class="header-right">
+        {{this.city}}
+        <span class=" arrow-icon"><i class="iconfont iconjiantou"></i></span>
+      </div>
+    </router-link>
+
   </div>
 </template>
 
@@ -50,6 +53,7 @@ export default {
       width: 1.24rem
       float: right
       text-align: center
+      color: #fff
       .arrow-icon
         margin-left: -.04rem
         font-size: .24rem
