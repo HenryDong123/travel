@@ -2,8 +2,8 @@
   <div>
     <city-header></city-header>
     <city-search></city-search>
-    <city-list></city-list>
-    <city-alphabet></city-alphabet>
+    <city-list :cities="cities" :hot-cites="hotCites"></city-list>
+    <city-alphabet :cities="cities"></city-alphabet>
   </div>
 </template>
 
@@ -19,6 +19,29 @@ export default {
     CitySearch,
     CityList,
     CityAlphabet
+  },
+  data () {
+    return {
+      cities: {},
+      hotCites: []
+    }
+  },
+  mounted () {
+    this.getCityInfo()
+  },
+  methods: {
+    getCityInfo () {
+      this.$http.get('/api/city.json')
+        .then(this.handleGetCityInfoSucc)
+    },
+    handleGetCityInfoSucc (res) {
+      if (res.data.ret && res.data.data) {
+        const data = res.data.data
+        console.log(data)
+        this.cities = data.cities
+        this.hotCites.splice(0, this.hotCites.length, ...data.hotCities)
+      }
+    }
   }
 }
 </script>
