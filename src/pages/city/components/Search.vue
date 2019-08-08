@@ -5,7 +5,7 @@
     </div>
     <div class="search-content" v-show="dataShow" ref="search">
       <ul>
-        <li class="search-item border-bottom" v-for="item in list" :key="item.id">{{item.name}}</li>
+        <li class="search-item border-bottom" v-for="item in list" :key="item.id" @click="handleCityClick(item.name)">{{item.name}}</li>
         <li class="search-item border-bottom" v-show="hasNoData">
           无匹配数据
         </li>
@@ -15,6 +15,7 @@
 </template>
 
 <script>
+import {mapMutations} from 'vuex'
 import Bscroll from 'better-scroll'
 export default {
   name: 'CitySearch',
@@ -30,7 +31,7 @@ export default {
     }
   },
   mounted () {
-    this.scroll = new Bscroll(this.$refs.search)
+    this.scroll = new Bscroll(this.$refs.search, {click: true})
   },
   computed: {
     dataShow () {
@@ -40,7 +41,14 @@ export default {
       return !this.list.length
     }
   },
-  methods: {},
+  methods: {
+    ...mapMutations(['changeCity']),
+    handleCityClick (city) {
+      // this.$store.dispatch('changeCity', city)
+      this.changeCity(city)
+      this.$router.push({name: 'Home'})
+    }
+  },
   watch: {
     searchVal () {
       if (this.emission) {
