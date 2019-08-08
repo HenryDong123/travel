@@ -21,7 +21,7 @@ export default {
     imgs: {
       type: Array,
       default () {
-        return [1, 2, 3, 4]
+        return []
       }
     }
   },
