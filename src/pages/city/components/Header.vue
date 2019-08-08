@@ -1,7 +1,7 @@
 <template>
   <div class="header">
     城市选择
-    <router-link to="/">
+    <router-link :to="{name: 'Home'}">
       <div class="header-back"><i class="iconfont iconfanhui"></i></div>
     </router-link>
   </div>
