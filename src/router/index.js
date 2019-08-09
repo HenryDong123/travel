@@ -1,8 +1,11 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from '../pages/home/Home'
-import City from '../pages/city/City'
-import Detail from '../pages/detail/Detail'
+// import Home from '../pages/home/Home'
+// import City from '../pages/city/City'
+// import Detail from '../pages/detail/Detail'
+const Home = () => import('../pages/home/Home')
+const City = () => import('../pages/city/City')
+const Detail = () => import('../pages/detail/Detail')
 Vue.use(Router)
 
 export default new Router({

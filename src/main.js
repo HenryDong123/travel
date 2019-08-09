@@ -8,6 +8,7 @@ import 'styles/border.css'
 import 'styles/icon.css'
 import store from './store'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
+import 'babel-polyfill'
 import 'swiper/dist/css/swiper.css'
 import axios from 'axios'
 Vue.prototype.$http = axios
