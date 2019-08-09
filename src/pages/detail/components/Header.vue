@@ -12,7 +12,7 @@
       v-show="!showAbs"
       :style="opacityStyle"
     >
-      <router-link to="/">
+      <router-link  :to="{name: 'Home'}">
         <div class="header-fixed-back"><i class="iconfont iconfanhui"></i></div>
       </router-link>
       景点详情
@@ -37,20 +37,30 @@ export default {
       if (top > 60) {
         let opacity = top / 140
         opacity = opacity > 1 ? 1 : opacity
-        this.opacityStyle = { opacity }
+        this.opacityStyle = {opacity}
         this.showAbs = false
       } else {
         this.showAbs = true
+        console.log(1)
       }
     }
   },
-  activated () {
+  mounted () {
     window.addEventListener('scroll', this.handleScroll)
   },
-  deactivated () {
+  destroyed () {
     window.removeEventListener('scroll', this.handleScroll)
   }
 }
+//   activated () {
+//     window.addEventListener('scroll', this.handleScroll)
+//
+//     console.log(2)
+//   },
+//   deactivated () {
+//     window.removeEventListener('scroll', this.handleScroll)
+//   }
+// }
 </script>
 
 <style lang="stylus" scoped>
